@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""Figures for the revised paper, from results/*.csv (run swarmlat.py first)."""
-import csv, math
+"""Figures from results/*.csv (run swarmlat.py first). Written to figures/."""
+import csv, math, os
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from swarmlat import P, analytic
+
+os.makedirs('figures', exist_ok=True)
 
 plt.rcParams.update({'font.size': 7.5, 'font.family': 'serif', 'axes.linewidth': 0.6,
                      'lines.linewidth': 1.1, 'legend.fontsize': 6.5,
@@ -50,7 +52,7 @@ h, l = axs[0].get_legend_handles_labels()
 fig.legend(h, l, loc='upper center', ncol=3, bbox_to_anchor=(0.53, 1.13),
            handlelength=1.6, columnspacing=0.8)
 fig.subplots_adjust(left=0.15, right=0.98, bottom=0.22, top=0.80, wspace=0.08)
-fig.savefig('../paper/fig_miss_vs_N.pdf', bbox_inches='tight')
+fig.savefig('figures/fig_miss_vs_N.pdf', bbox_inches='tight')
 plt.close(fig)
 
 # ---------------- Fig. 4: (a) saturation collapse, (b) miss vs deadline
@@ -90,7 +92,7 @@ ax.text(1.15, 3e-3, 'L', color=C['L'], fontsize=7)
 ax.text(40, 6e-3, 'E', color=C['E'], fontsize=7)
 ax.text(30, 0.25, 'S-ALOHA, S-TDMA ($k{=}4$)', color=C['S-TDMA-4'], fontsize=6)
 fig.subplots_adjust(left=0.13, right=0.99, bottom=0.22, top=0.88, wspace=0.45)
-fig.savefig('../paper/fig_theorems.pdf', bbox_inches='tight')
+fig.savefig('figures/fig_theorems.pdf', bbox_inches='tight')
 plt.close(fig)
 
 # ---------------- Fig. 5: mission-level collision rate vs N (M1)
@@ -118,6 +120,6 @@ ax.set_yticklabels(['0', '$10^{-1}$', '1', '10', '$10^{2}$', '$10^{3}$'])
 ax.set_xlabel('swarm size $N$'); ax.set_ylabel('collisions / agent / min')
 ax.legend(loc='center left', bbox_to_anchor=(1.01, 0.5), handlelength=1.5)
 fig.subplots_adjust(left=0.14, right=0.66, bottom=0.22, top=0.97)
-fig.savefig('../paper/fig_collisions.pdf', bbox_inches='tight')
+fig.savefig('figures/fig_collisions.pdf', bbox_inches='tight')
 plt.close(fig)
 print('figures written')
