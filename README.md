@@ -30,6 +30,3 @@ All runs use fixed seeds. Parameters are listed at the top of `swarmlat.py` (`P`
 - The S-TDMA baseline is an ideal collision-free schedule.
 - The one-hop model uses mean-field contention.
 
-## Authors
-
-Madhavan Vivekanandan and Sasimegala Ramasamy
